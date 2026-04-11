@@ -18,6 +18,11 @@
         <h2>게시판</h2>
     </header>
     <main>
+        <div class="button-area">
+            <a href="\write">
+                <button type="button">글 작성하기</button>
+            </a>
+        </div>
      <table>
         <thead>
             <tr>
@@ -30,9 +35,12 @@
         <tbody>
             {% for post in posts %}
             <tr>
-                <td>{{ post.id }}</td>
+                <td>
+                    <a href="/post/{{ post.id }}">{{ post.title }}</a>
+                </td>
                 <td>{{ post.title }}</td>
                 <td>{{ post.author }}</td>
+                <td>{{ post.date }}</td>
             </tr>
             {% endfor %}
         </tbody>

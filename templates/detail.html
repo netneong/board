@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} - 게시글 상세보기</title>
+    <style>
+        /* write.html의 폼과 통일감을 주기 위한 기본 컨테이너 스타일 */
+        body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        
+        /* 게시글 헤더 영역 (제목, 작성자, 날짜) */
+        .post-header { border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .post-title { font-size: 24px; font-weight: bold; margin-bottom: 10px; color: #333; }
+        .post-meta { display: flex; justify-content: space-between; font-size: 14px; color: #777; }
+        
+        /* 게시글 본문 영역 */
+        .post-content { 
+            min-height: 250px; 
+            line-height: 1.6; 
+            color: #444;
+            /* DB에 저장된 줄바꿈(\n)을 화면에 그대로 출력해주는 속성 */
+            white-space: pre-wrap; 
+        }
+        
+        /* 하단 버튼 영역 */
+        .button-group { 
+            margin-top: 30px; 
+            padding-top: 15px; 
+            border-top: 1px solid #eee; 
+            display: flex; 
+            justify-content: space-between; 
+        }
+        .left-btns { display: flex; gap: 10px; }
+        .right-btns { display: flex; gap: 10px; }
+        
+        .btn { 
+            padding: 8px 16px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 14px; 
+            cursor: pointer; 
+            border: none; 
+        }
+        .btn-list { background-color: #6c757d; color: white; }
+        .btn-edit { background-color: #007bff; color: white; }
+        .btn-delete { background-color: #dc3545; color: white; }
+        
+        /* 삭제 버튼 폼 디자인 초기화 */
+        .delete-form { margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="post-header">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-meta">
+            <span class="author">작성자: {{ post.author }}</span>
+            <span class="date">작성일: {{ post.date }}</span>
+        </div>
+    </div>
+
+    <div class="post-content">{{ post.content }}</div>
+
+    <div class="button-group">
+        <div class="left-btns">
+            <a href="/" class="btn btn-list">목록으로</a>
+        </div>
+        <div class="right-btns">
+            <a href="/edit/{{ post.id }}" class="btn btn-edit">수정</a>
+            
+            <form action="/delete/{{ post.id }}" method="POST" class="delete-form">
+                <button type="submit" class="btn btn-delete" onclick="return confirm('정말 이 게시글을 삭제하시겠습니까?');">삭제</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
