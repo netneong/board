@@ -1,4 +1,6 @@
-# 메모장으로 활용할 공간
+# flask로 게시판 제작
+- CRUD기능을 포함
+- SQLite DB를 연결 
 
 ## 1. 가상환경 만들기 `python -m venv [가상환경 이름]
 가상환경 사용할때는 venv\Scripts\activate
@@ -19,4 +21,12 @@ if __name__ == '__main__':
     app.run()
 
 ## 4.  CRUD 기능 하나씩 직접 구현
+-  Read   — 글 목록 보기
+-  Create — 글 쓰기
+-  Detail — 글 상세보기
+-  Update — 글 수정
+-  Delete — 글 삭제
+-  DB     — SQLite 연결
+
 ## 5.  SQLite DB 연결
+- 메모리(리스트) 방식에서 DB 방식으로 전환
